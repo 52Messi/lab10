@@ -1,0 +1,23 @@
+def transpose_ragged(matrix, fill=None):
+    if not matrix:
+        return []
+
+    max_len = max(len(row) for row in matrix)
+    result = []
+
+    for col_idx in range(max_len):
+        new_row = []
+        for row in matrix:
+            if col_idx < len(row):
+                new_row.append(row[col_idx])
+            else:
+                new_row.append(fill)
+        result.append(new_row)
+
+    return result
+
+
+print(transpose_ragged([]))
+print(transpose_ragged([[1, 2, 3], [4, 5]]))
+print(transpose_ragged([[1], [2, 3]]))
+print(transpose_ragged([[1, 2], [3]], fill=0))
