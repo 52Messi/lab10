@@ -1,0 +1,18 @@
+def word_frequency_sorted(text):
+    if not text:
+        return []
+    words = text.lower().split()
+    counts = {}
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+    result = list(counts.items())
+    result.sort(key=lambda x: (-x[1], x[0]))
+    return result
+# --- Проверки из задания ---
+print(word_frequency_sorted("b a b a c"))
+print(word_frequency_sorted(""))
+print(word_frequency_sorted("one"))
+print(word_frequency_sorted("a A b"))
